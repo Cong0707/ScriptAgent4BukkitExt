@@ -20,12 +20,7 @@ This repository contains the loader and lots of strong scripts(use or for exampl
 
 ## 快速开始
 
-> 建议下载有tag标注版本号的版本  
-> 版本号命名规则: 1.a.b (a代表加载器版本，相同版本号加载器jar可通用)
-
-1. 从Action BuildPlugin中下载jar
-2. 从Action CheckScript中下载脚本包,解压到scripts目录
-3. 使用```java -jar [刚刚下载的jar].jar```运行即可
+> 自行编译(
 
 ## 具体功能
 

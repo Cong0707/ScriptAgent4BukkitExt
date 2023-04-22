@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.20"
     id("me.qoomon.git-versioning") version "2.1.1"
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "cf.wayzer"

@@ -64,7 +64,7 @@ dependencies {
     val mcVersion = "1.18-R0.1-SNAPSHOT"
     val pluginImplementation by configurations
     pluginImplementation("cf.wayzer:ScriptAgent:$libraryVersion")
-    pluginImplementation("cf.wayzer:LibraryManager:1.4.1")
+    pluginImplementation("cf.wayzer:LibraryManager:1.6")
     pluginImplementation("org.spigotmc:spigot-api:$mcVersion")
 
     implementation(kotlin("script-runtime"))

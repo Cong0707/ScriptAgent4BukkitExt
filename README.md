@@ -40,3 +40,7 @@ This repository contains the loader and lots of strong scripts(use or for exampl
 - 脚本：归属脚本制作者，本仓库脚本转载需注明本页面链接
     - 脚本默认允许私人修改并使用，不允许修改原作者版权信息，公开请folk或引用该仓库(脚本作者声明优先)
     - mirai模块及依赖该模块的所有代码，遵循AGPLv3协议
+
+##以下是用于触发action的草稿区
+2023.4.22.19:35
+

@@ -1,7 +1,7 @@
 ![For Minecraft/Bukkit](https://img.shields.io/badge/For-Minecraft/Bukkit-orange)
 ![Lang CN](https://img.shields.io/badge/Lang-ZH--CN-blue)
-[![BuildPlugin](https://github.com/way-zer/ScriptAgent4BukkitExt/actions/workflows/buildPlugin.yml/badge.svg)](https://github.com/way-zer/ScriptAgent4BukkitExt/actions/workflows/buildPlugin.yml)
-[![CheckScript](https://github.com/way-zer/ScriptAgent4BukkitExt/actions/workflows/checkScripts.yml/badge.svg)](https://github.com/way-zer/ScriptAgent4BukkitExt/actions/workflows/checkScripts.yml)
+[![BuildPlugin](https://github.com/Cong0707/ScriptAgent4BukkitExt/actions/workflows/buildPlugin.yml/badge.svg)](https://github.com/Cong0707/ScriptAgent4BukkitExt/actions/workflows/buildPlugin.yml)
+[![CheckScript](https://github.com/Cong0707/ScriptAgent4BukkitExt/actions/workflows/checkScripts.yml/badge.svg)](https://github.com/Cong0707/ScriptAgent4BukkitExt/actions/workflows/checkScripts.yml)
 
 # ScriptAgent for Bukkit
 

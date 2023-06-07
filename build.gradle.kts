@@ -89,7 +89,7 @@ dependencies {
     api("net.kyori:adventure-api:4.9.3")
 
     //mirai
-    implementation("net.mamoe:mirai-core-api-jvm:2.12.3")
+    implementation("net.mamoe:mirai-core-api-jvm:2.15.0-M1")
 
     //superitem
     api("de.tr7zw:item-nbt-api:2.8.0")

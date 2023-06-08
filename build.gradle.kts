@@ -61,11 +61,13 @@ repositories {
 
 dependencies {
     val libraryVersion = "1.10.1.2"
-    val mcVersion = "1.18-R0.1-SNAPSHOT"
+    val mcVersion = "1.19.4-R0.1-SNAPSHOT"
     val pluginImplementation by configurations
     pluginImplementation("cf.wayzer:ScriptAgent:$libraryVersion")
     pluginImplementation("cf.wayzer:LibraryManager:1.6")
     pluginImplementation("org.spigotmc:spigot-api:$mcVersion")
+
+    pluginImplementation("com.github.TinyLake.MindustryX:core:v144.201")
 
     implementation(kotlin("script-runtime"))
     implementation("cf.wayzer:ScriptAgent:$libraryVersion")

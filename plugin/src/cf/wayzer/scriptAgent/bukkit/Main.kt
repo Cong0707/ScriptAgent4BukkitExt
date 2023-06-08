@@ -11,7 +11,10 @@ import java.io.File
 @Suppress("unused")
 @OptIn(LoaderApi::class)
 class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
-    loader.pluginLoader as JavaPluginLoader, loader.description, loader.dataFolder, file
+    loader.pluginLoader as JavaPluginLoader,
+                           loader.description,
+                           loader.dataFolder,
+                           file
 ) {
     init {
         

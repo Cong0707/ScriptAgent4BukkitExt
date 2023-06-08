@@ -1,5 +1,6 @@
 package cf.wayzer.scriptAgent
 
+import arc.files.Fi
 import cf.wayzer.scriptAgent.define.LoaderApi
 import cf.wayzer.scriptAgent.define.ScriptInfo
 import kotlinx.coroutines.runBlocking
@@ -9,8 +10,10 @@ import java.io.File
 @Suppress("unused")
 @OptIn(LoaderApi::class)
 class ScriptAgent4Bukkit : JavaPlugin() {
+
     init {
         ScriptAgent.load()
+        val dataFolder = Fi(dataFolder).child("scripts").file()
         if (!dataFolder.exists()) dataFolder.mkdirs()
     }
 

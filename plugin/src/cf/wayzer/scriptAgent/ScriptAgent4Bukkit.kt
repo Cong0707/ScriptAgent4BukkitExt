@@ -29,7 +29,7 @@ class ScriptAgent4Bukkit : JavaPlugin() {
     private var mainScript: ScriptInfo? = null
 
     override fun onLoad() {
-        val dlogger.info("onload")
+        logger.info("onload")
 
         val defaultMain = "main/bootStrap"
 

@@ -14,11 +14,7 @@ class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
     loader.pluginLoader as JavaPluginLoader, loader.description, loader.dataFolder, file
 ) {
     init {
-        val classLoader = loader.javaClass.classLoader
-        classLoader::class.java.getDeclaredField("remapper").apply {
-            isAccessible = true
-            set(classLoader, null)
-        }
+        
         val dataFolder = File(dataFolder, "scripts")
         if (!dataFolder.exists()) dataFolder.mkdirs()
     }

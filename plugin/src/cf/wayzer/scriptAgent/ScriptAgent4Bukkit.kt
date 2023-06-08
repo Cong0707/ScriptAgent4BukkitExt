@@ -1,6 +1,5 @@
 package cf.wayzer.scriptAgent
 
-import arc.files.Fi
 import cf.wayzer.scriptAgent.define.LoaderApi
 import cf.wayzer.scriptAgent.define.ScriptInfo
 import kotlinx.coroutines.runBlocking

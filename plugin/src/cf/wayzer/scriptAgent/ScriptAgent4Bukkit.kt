@@ -12,7 +12,7 @@ class ScriptAgent4Bukkit : JavaPlugin() {
 
     init {
         ScriptAgent.load()
-        val dataFolder = dataFolder
+        val dataFolder = File(dataFolder, "scripts")
         if (!dataFolder.exists()) dataFolder.mkdirs()
     }
 

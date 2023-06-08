@@ -4,7 +4,7 @@ version: @version@
 author: Way__Zer cong
 description: sa for Minecraft server
 api-version: 1.19.4
-Folia-supported: true
+folia-supported: true
 commands: 
   ScriptAgent:
     description: ScriptAgent Main Command

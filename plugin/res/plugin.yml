@@ -3,7 +3,7 @@ main: cf.wayzer.scriptAgent.ScriptAgent4Bukkit
 version: @version@
 author: Way__Zer cong
 description: sa for Minecraft server
-api-version: "1.19.4"
+api-version: "1.13"
 folia-supported: true
 commands: 
   ScriptAgent:

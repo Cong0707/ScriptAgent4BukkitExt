@@ -11,17 +11,36 @@ import java.io.File
 class ScriptAgent4Bukkit : JavaPlugin() {
 
     init {
+        logger.info("sa init")
+
         ScriptAgent.load()
+
+        logger.info("sa load")
+
         val dataFolder = File(dataFolder, "scripts")
+
+        logger.info("override datafolder")
+
         if (!dataFolder.exists()) dataFolder.mkdirs()
+
+        logger.info("sat datafolder")
     }
 
     private var mainScript: ScriptInfo? = null
 
     override fun onLoad() {
+        val dlogger.info("onload")
+
         val defaultMain = "main/bootStrap"
+
+        logger.info("set version")
+
         val version = description.version
+
+        logger.info("set main")
+
         val main = System.getenv("SAMain") ?: defaultMain
+
         logger.info("SAMain=$main")
 
         Config.logger = logger

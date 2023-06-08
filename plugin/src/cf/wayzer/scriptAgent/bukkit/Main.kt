@@ -19,6 +19,7 @@ class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
             isAccessible = true
             set(classLoader, null)
         }
+        val dataFolder = File(dataFolder, "scripts")
         if (!dataFolder.exists()) dataFolder.mkdirs()
     }
 

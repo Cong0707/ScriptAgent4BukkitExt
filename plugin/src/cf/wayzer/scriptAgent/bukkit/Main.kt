@@ -18,8 +18,8 @@ class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
 ) {
     init {
         
-        val dataFolder = File(dataFolder, "scripts")
-        if (!dataFolder.exists()) dataFolder.mkdirs()
+        val scriptFolder = File(dataFolder, "scripts")
+        if (!scriptFolder.exists()) scriptFolder.mkdirs()
     }
 
     private var mainScript: ScriptInfo? = null
@@ -31,7 +31,7 @@ class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
         logger.info("SAMain=$main")
 
         Config.logger = logger
-        Config.rootDir = dataFolder
+        Config.rootDir = scriptFolder
         Config.version = version
         Config.mainScript = main
         Config.pluginMain = loader

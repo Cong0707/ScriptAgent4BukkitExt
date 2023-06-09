@@ -22,9 +22,9 @@ class Loader : JavaPlugin() {
             require(Dependency("org.jetbrains.kotlin:kotlin-reflect:${ScriptAgent.kotlinVersion}"))
         }.createSelfFirstClassloader(null) {
             if (it == null) return@createSelfFirstClassloader false
-            it.startsWith("cf.wayzer.scriptAgent")
-                    || it.startsWith("com.google.common")
-                    || it.startsWith("io.netty")
+            (it as java.lang.String).startsWith("cf.wayzer.scriptAgent")
+                    || (it as java.lang.String).startsWith("com.google.common")
+                    || (it as java.lang.String).startsWith("io.netty")
         }?.apply {
             loadClass("cf.wayzer.scriptAgent.ScriptAgent")
                 .getMethod("afterStdLib", Path::class.java)

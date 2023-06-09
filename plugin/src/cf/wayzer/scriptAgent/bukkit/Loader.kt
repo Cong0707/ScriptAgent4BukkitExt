@@ -4,7 +4,6 @@ import cf.wayzer.libraryManager.Dependency
 import cf.wayzer.libraryManager.LibraryManager
 import cf.wayzer.scriptAgent.ScriptAgent
 import org.bukkit.plugin.java.JavaPlugin
-import org.bukkit.plugin.java.JavaPluginLoader
 import java.io.File
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -30,15 +29,10 @@ class Loader : JavaPlugin() {
                 .getMethod("afterStdLib", Path::class.java)
                 .invoke(null, libraryPath)
         }
-        val loader = this.pluginLoader as? JavaPluginLoader
-        if (loader != null) {
-            impl = classLoader?.loadClass("cf.wayzer.scriptAgent.bukkit.Main")
-                    ?.getConstructor(JavaPluginLoader::class.java, JavaPlugin::class.java, File::class.java)
-                    ?.newInstance(this, file) as? JavaPlugin
-                    ?: error("Fail newInstance")
-        }else{
-            error("Fail casting")
-        }
+        impl = classLoader?.loadClass("cf.wayzer.scriptAgent.bukkit.Main")
+            ?.getConstructor(JavaPlugin::class.java, File::class.java)
+            ?.newInstance(this, file) as? JavaPlugin
+            ?: error("Fail newInstance")
     }
 
     override fun onLoad() {

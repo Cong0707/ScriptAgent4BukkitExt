@@ -14,9 +14,12 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugi
    private lateinit var javaPlugin: JavaPlugin
 
     init {
-        Class<?> jarClass = Class.forName("cf.wayzer.scriptAgent.bukkit.Main")
-        Class pluginClass = jarClass.asSubclass(JavaPlugin::class.java)
-        Object clazzInstance = pluginClass.getDeclaredConstructor().newInstance();
+        val jarClass = Class.forName("cf.wayzer.scriptAgent.bukkit.Main")
+
+        val pluginClass: Class = jarClass.asSubclass(JavaPlugin::class.java)
+
+        val clazzInstance = pluginClass.getDeclaredConstructor().newInstance();
+
         clazzInstance as JavaPlugin
        
         if (!dataFolder.exists()) dataFolder.mkdirs()

@@ -12,10 +12,7 @@ import java.io.File
 @OptIn(LoaderApi::class)
 class Main(private val loader: JavaPlugin, file: File) : JavaPlugin() {
     init {
-        pluginLoader = loader.pluginLoader
-        description = loader.description
-        dataFolder = loader.dataFolder
-        this.file = file
+        
         
         if (!dataFolder.exists()) dataFolder.mkdirs()
         val scriptFolder = File(dataFolder, "scripts")

@@ -18,9 +18,9 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugi
 
         val pluginClass: Class = jarClass.asSubclass(JavaPlugin::class.java)
 
-        val clazzInstance = pluginClass.getDeclaredConstructor().newInstance();
+        val clazzInstance: Object = pluginClass.getDeclaredConstructor().newInstance()
 
-        clazzInstance as JavaPlugin
+        clazzInstance as JavaPlugin 
        
         if (!dataFolder.exists()) dataFolder.mkdirs()
         val scriptFolder = File(dataFolder, "scripts")

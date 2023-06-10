@@ -10,9 +10,9 @@ import java.io.File
 
 @Suppress("unused", "UNCHECKED_CAST")
 @OptIn(LoaderApi::class)
-class Main(private val loader: ClassLoader) : JavaPlugin() {
+class Main(private val classLoader: ClassLoader, loader: JavaPlugin) : JavaPlugin() {
     private lateinit var javaPlugin: JavaPlugin
-    
+
     init {
         val providerUtilClass = Class.forName("io.papermc.paper.plugin.provider.util.ProviderUtil")
         val loadClassMethod = providerUtilClass.getMethod("loadClass", String::class.java, Class::class.java, ClassLoader::class.java)

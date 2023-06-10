@@ -14,10 +14,11 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugi
    private lateinit var javaPlugin: JavaPlugin
 
     init {
-        val providerUtilClass = Class.forName("io.papermc.paper.plugin.provider.util.ProviderUtil")
-        val loadClassMethod = providerUtilClass.getMethod("loadClass", String::class.java, Class::class.java, ClassLoader::class.java)
-        javaPlugin = loadClassMethod.invoke(null, "cf.wayzer.scriptAgent.bukkit.Main", JavaPlugin::class.java, this.getClass().getClassLoader()) as JavaPlugin
-        
+        Class<?> jarClass = Class.forName("cf.wayzer.scriptAgent.bukkit.Main")
+        Class pluginClass = jarClass.asSubclass(JavaPlugin::class.java)
+        Object clazzInstance = pluginClass.getDeclaredConstructor().newInstance();
+        clazzInstance as JavaPlugin
+       
         if (!dataFolder.exists()) dataFolder.mkdirs()
         val scriptFolder = File(dataFolder, "scripts")
         if (!scriptFolder.exists()) scriptFolder.mkdirs()

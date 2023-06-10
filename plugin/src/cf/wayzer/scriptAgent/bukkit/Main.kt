@@ -8,14 +8,23 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.plugin.java.JavaPluginLoader
 import java.io.File
 
-@Suppress("unused")
+@Suppress("unused", "UNCHECKED_CAST")
 @OptIn(LoaderApi::class)
-class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
-    loader.pluginLoader as JavaPluginLoader,
-                           loader.description,
-                           loader.dataFolder,
-                           file
-) {
+class Main(private val loader: ClassLoader) : 
+Class.forName(
+    "io.papermc.paper.plugin.provider.util.ProviderUtil"
+).getMethod(
+    "loadClass",
+    String::class.java,
+    Class::class.java,
+    ClassLoader::class.java
+).invoke(
+    null, 
+    "cf.wayzer.scriptAgent.bukkit.Main", 
+    JavaPlugin::class.java, 
+    classLoader
+) as JavaPlugin
+{
     init {
         if (!dataFolder.exists()) dataFolder.mkdirs()
         val scriptFolder = File(dataFolder, "scripts")

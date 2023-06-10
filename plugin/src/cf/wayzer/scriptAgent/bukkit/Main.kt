@@ -16,9 +16,9 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugi
     init {
         val jarClass = Class.forName("cf.wayzer.scriptAgent.bukkit.Main")
 
-        val pluginClass: Class = jarClass.asSubclass(JavaPlugin::class.java)
+        val pluginClass = jarClass.asSubclass(JavaPlugin::class.java)
 
-        val clazzInstance: Object = pluginClass.getDeclaredConstructor().newInstance()
+        val clazzInstance = pluginClass.getDeclaredConstructor().newInstance()
 
         clazzInstance as JavaPlugin 
        

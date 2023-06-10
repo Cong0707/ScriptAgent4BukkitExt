@@ -10,13 +10,13 @@ import java.io.File
 
 @Suppress("unused")
 @OptIn(LoaderApi::class)
-class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
-    loader.pluginLoader as JavaPluginLoader,
-                           loader.description,
-                           loader.dataFolder,
-                           file
-) {
+class Main(private val loader: JavaPlugin, file: File) : JavaPlugin() {
     init {
+        pluginLoader = loader.pluginLoader
+        description = loader.description
+        dataFolder = loader.dataFolder
+        this.file = file
+        
         if (!dataFolder.exists()) dataFolder.mkdirs()
         val scriptFolder = File(dataFolder, "scripts")
         if (!scriptFolder.exists()) scriptFolder.mkdirs()

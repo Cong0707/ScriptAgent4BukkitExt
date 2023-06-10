@@ -31,9 +31,9 @@ class Loader : JavaPlugin() {
         }
         impl = classLoader?.loadClass("cf.wayzer.scriptAgent.bukkit.Main")
 
-            ?.getConstructor(ClassLoader::class.java, JavaPlugin::class.java)
+            ?.getConstructor(JavaPlugin::class.java, ClassLoader::class.java)
 
-            ?.newInstance(classLoader, this) as? JavaPlugin
+            ?.newInstance(this, classLoader) as? JavaPlugin
 
             ?: error("Fail newInstance")
     }

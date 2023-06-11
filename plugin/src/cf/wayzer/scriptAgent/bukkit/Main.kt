@@ -8,30 +8,26 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.plugin.java.JavaPluginLoader
 import java.io.File
 
-@Suppress("unused")
+@Suppress("unused", "UNCHECKED_CAST")
 @OptIn(LoaderApi::class)
-class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
-    loader.pluginLoader as JavaPluginLoader,
-                           loader.description,
-                           loader.dataFolder,
-                           file
-) {
+class Main(private val loader: JavaPlugin, classLoader: ClassLoader) {
+
     init {
-        if (!dataFolder.exists()) dataFolder.mkdirs()
-        val scriptFolder = File(dataFolder, "scripts")
+        if (!loader.dataFolder.exists()) loader.dataFolder.mkdirs()
+        val scriptFolder = File(loader.dataFolder, "scripts")
         if (!scriptFolder.exists()) scriptFolder.mkdirs()
     }
 
     private var mainScript: ScriptInfo? = null
 
-    override fun onLoad() {
+    fun onLoad() {
         val defaultMain = "main/bootStrap"
-        val version = description.version
+        val version = loader.description.version
         val main = System.getenv("SAMain") ?: defaultMain
-        logger.info("SAMain=$main")
+        loader.logger.info("SAMain=$main")
 
-        Config.logger = logger
-        Config.rootDir = File(dataFolder, "scripts")
+        Config.logger = loader.logger
+        Config.rootDir = File(loader.dataFolder, "scripts")
         Config.version = version
         Config.mainScript = main
         Config.pluginMain = loader
@@ -48,7 +44,7 @@ class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
         }
     }
 
-    override fun onEnable() {
+    fun onEnable() {
         Config.pluginCommand = loader.getCommand("ScriptAgent")
 
         if (mainScript != null) runBlocking {
@@ -56,26 +52,26 @@ class Main(private val loader: JavaPlugin, file: File) : JavaPlugin(
                 add(mainScript!!);enable()
             }
         }
-        logger.info("===========================")
-        logger.info("     ScriptAgent ${Config.version}         ")
-        logger.info("           By WayZer    ")
-        logger.info("插件官网: https://github.com/way-zer/ScriptAgent4BukkitExt")
-        logger.info("QQ交流群: 1033116078")
+        loader.logger.info("===========================")
+        loader.logger.info("     ScriptAgent ${Config.version}         ")
+        loader.logger.info("           By WayZer    ")
+        loader.logger.info("插件官网: https://github.com/way-zer/ScriptAgent4BukkitExt")
+        loader.logger.info("QQ交流群: 1033116078")
         if (mainScript == null)
-            logger.warning("未找到启动脚本(SAMain=${Config.mainScript}),请下载安装脚本包,以发挥本插件功能")
+            loader.logger.warning("未找到启动脚本(SAMain=${Config.mainScript}),请下载安装脚本包,以发挥本插件功能")
         else {
             val all = ScriptRegistry.allScripts { true }
-            logger.info(
+            loader.logger.info(
                 "共找到${all.size}脚本," +
                         "加载成功${all.count { it.scriptState.loaded }}," +
                         "启用成功${all.count { it.scriptState.enabled }}," +
                         "出错${all.count { it.failReason != null }}"
             )
         }
-        logger.info("===========================")
+        loader.logger.info("===========================")
     }
 
-    override fun onDisable() {
+    fun onDisable() {
         runBlocking {
             ScriptManager.disableAll()
         }

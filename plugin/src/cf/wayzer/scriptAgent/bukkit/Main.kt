@@ -58,7 +58,7 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) {
         loader.logger.info("插件官网: https://github.com/way-zer/ScriptAgent4BukkitExt")
         loader.logger.info("QQ交流群: 1033116078")
         if (mainScript == null)
-            logger.warning("未找到启动脚本(SAMain=${Config.mainScript}),请下载安装脚本包,以发挥本插件功能")
+            loader.logger.warning("未找到启动脚本(SAMain=${Config.mainScript}),请下载安装脚本包,以发挥本插件功能")
         else {
             val all = ScriptRegistry.allScripts { true }
             loader.logger.info(

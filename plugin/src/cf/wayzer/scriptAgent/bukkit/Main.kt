@@ -22,7 +22,7 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) {
 
     fun onLoad() {
         val defaultMain = "main/bootStrap"
-        val version = description.version
+        val version = loader.description.version
         val main = System.getenv("SAMain") ?: defaultMain
         logger.info("SAMain=$main")
 

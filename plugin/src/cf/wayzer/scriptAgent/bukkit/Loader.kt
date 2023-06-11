@@ -37,16 +37,16 @@ class Loader : JavaPlugin() {
 
     override fun onLoad() {
         val method = clazz?.getDeclaredMethod("onLoad")
-        method.invoke(instance)
+        method?.invoke(instance)
     }
 
     override fun onEnable() {
         val method = clazz?.getDeclaredMethod("onEnable")
-        method.invoke(instance)
+        method?.invoke(instance)
     }
 
     override fun onDisable() {
         val method = clazz?.getDeclaredMethod("onDisable")
-        method.invoke(instance)
+        method?.invoke(instance)
     }
 }

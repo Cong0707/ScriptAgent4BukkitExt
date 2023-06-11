@@ -30,10 +30,9 @@ class Loader : JavaPlugin() {
                 .invoke(null, libraryPath)
         }
         impl = classLoader?.loadClass("cf.wayzer.scriptAgent.bukkit.Main")
-
             ?.getConstructor(JavaPlugin::class.java, ClassLoader::class.java)
-
-            ?.newInstance(this, classLoader)
+            ?.newInstance(this, classLoader) as? cf.wayzer.scriptAgent.bukkit.Main
+            ?: error("Fail newInstance")
     }
 
     override fun onLoad() {

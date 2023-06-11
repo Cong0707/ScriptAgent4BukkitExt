@@ -33,9 +33,7 @@ class Loader : JavaPlugin() {
 
             ?.getConstructor(JavaPlugin::class.java, ClassLoader::class.java)
 
-            ?.newInstance(this, classLoader) as? JavaPlugin
-
-            ?: error("Fail newInstance")
+            ?.newInstance(this, classLoader)
     }
 
     override fun onLoad() {

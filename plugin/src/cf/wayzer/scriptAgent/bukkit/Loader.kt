@@ -9,7 +9,8 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 class Loader : JavaPlugin() {
-    private val impl: JavaPlugin
+    private val clazz: Class<*>?
+    private val instance: Any?
 
     init {
         val libraryPath = Paths.get("libs")
@@ -29,21 +30,23 @@ class Loader : JavaPlugin() {
                 .getMethod("afterStdLib", Path::class.java)
                 .invoke(null, libraryPath)
         }
-        impl = classLoader?.loadClass("cf.wayzer.scriptAgent.bukkit.Main")
-            ?.getConstructor(JavaPlugin::class.java, File::class.java)
-            ?.newInstance(this, file) as? JavaPlugin
-            ?: error("Fail newInstance")
+        clazz = classLoader?.loadClass("cf.wayzer.scriptAgent.bukkit.Main")
+        instance = clazz?.getConstructor(JavaPlugin::class.java, ClassLoader::class.java)
+            ?.newInstance(this, classLoader)
     }
 
     override fun onLoad() {
-        impl.onLoad()
+        val method = clazz?.getDeclaredMethod("onLoad")
+        method?.invoke(instance)
     }
 
     override fun onEnable() {
-        impl.onEnable()
+        val method = clazz?.getDeclaredMethod("onEnable")
+        method?.invoke(instance)
     }
 
     override fun onDisable() {
-        impl.onDisable()
+        val method = clazz?.getDeclaredMethod("onDisable")
+        method?.invoke(instance)
     }
 }

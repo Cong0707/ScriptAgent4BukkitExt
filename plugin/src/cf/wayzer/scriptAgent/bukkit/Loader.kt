@@ -9,7 +9,7 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 class Loader : JavaPlugin() {
-    private val impl: JavaPlugin
+    private val impl
 
     init {
         val libraryPath = Paths.get("libs")

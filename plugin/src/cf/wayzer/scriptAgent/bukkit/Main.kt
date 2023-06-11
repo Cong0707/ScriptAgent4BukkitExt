@@ -10,18 +10,9 @@ import java.io.File
 
 @Suppress("unused", "UNCHECKED_CAST")
 @OptIn(LoaderApi::class)
-class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugin() {    
-   private lateinit var javaPlugin: JavaPlugin
+class Main(private val loader: JavaPlugin, classLoader: ClassLoader) {
 
     init {
-        val jarClass = Class.forName("cf.wayzer.scriptAgent.bukkit.Main")
-
-        val pluginClass = jarClass.asSubclass(JavaPlugin::class.java)
-
-        val clazzInstance = pluginClass.getDeclaredConstructor().newInstance()
-
-        clazzInstance as JavaPlugin 
-       
         if (!dataFolder.exists()) dataFolder.mkdirs()
         val scriptFolder = File(dataFolder, "scripts")
         if (!scriptFolder.exists()) scriptFolder.mkdirs()
@@ -29,7 +20,7 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugi
 
     private var mainScript: ScriptInfo? = null
 
-    override fun onLoad() {
+    fun onLoad() {
         val defaultMain = "main/bootStrap"
         val version = description.version
         val main = System.getenv("SAMain") ?: defaultMain
@@ -53,7 +44,7 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugi
         }
     }
 
-    override fun onEnable() {
+    fun onEnable() {
         Config.pluginCommand = loader.getCommand("ScriptAgent")
 
         if (mainScript != null) runBlocking {
@@ -80,7 +71,7 @@ class Main(private val loader: JavaPlugin, classLoader: ClassLoader) : JavaPlugi
         logger.info("===========================")
     }
 
-    override fun onDisable() {
+    fun onDisable() {
         runBlocking {
             ScriptManager.disableAll()
         }

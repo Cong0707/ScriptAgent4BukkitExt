@@ -1,5 +1,0 @@
-ID main
-FQ_NAME main.Module
-NAME ScriptAgent 主模块
-SOURCE_MD5 -2088e141fd67f366c54d54fba649d183
-+DEPENDS coreBukkit 

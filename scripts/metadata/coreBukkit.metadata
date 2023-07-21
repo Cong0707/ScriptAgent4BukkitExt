@@ -1,8 +1,0 @@
-ID coreBukkit
-FQ_NAME coreBukkit.Module
-NAME Bukkit 核心脚本模块
-SOURCE_MD5 792e7afd23570f7f9a5bf3279d2bc6f8
-+DEPENDS coreLibrary 
-+IMPORT DefaultImport coreBukkit.lib.*
-+IMPORT DefaultImport org.bukkit.ChatColor.*
-+IMPORT LibraryByClassLoader org.bukkit.Bukkit

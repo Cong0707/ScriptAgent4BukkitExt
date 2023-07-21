@@ -40,12 +40,15 @@ object RootCommands : Commands() {
         override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>): List<String> {
             var result: List<String> = emptyList()
 
-            BukkitDispatcher.safeBlocking {
+            BukkitDispatcher(Scheduler.AsyncScheduler).safeBlocking {
                 try {
                     info.onComplete(CommandContext().apply {
                         this.sender = sender
                         hasPermission = { sender.hasPermission(it) }
-                        replyTabComplete = { result = it;CommandInfo.Return() }
+                        replyTabComplete = {
+                            result = it
+                            CommandInfo.Return()
+                        }
                         prefix = "/$alias "
                         arg = args.toList()
                     })

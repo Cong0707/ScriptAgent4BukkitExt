@@ -21,5 +21,5 @@ suspend fun boot(action: String) = ScriptManager.transaction {
     }
 }
 
-BukkitDispatcher.safeBlocking { boot("load") }
+BukkitDispatcher(Scheduler.GlobalRegionScheduler).safeBlocking { boot("load") }
 onEnable { boot("enable") }

@@ -1,0 +1,11 @@
+{
+  "ItemInfo": {
+    "material": "BONE",
+    "data": 0,
+    "name": "§7傀儡法杖",
+    "lore": [
+      "§2§o召唤傀儡与你并肩作战"
+    ]
+  },
+  "Permission": "superitem.WolfBone"
+}
